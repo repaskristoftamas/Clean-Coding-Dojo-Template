@@ -1,0 +1,55 @@
+Coding Dojo
+A Coding Dojo egy olyan hely, ahol a programozók összegyűlnek, hogy együtt gyakoroljanak. Le kell lassítani egy kicsit, sokszor megismételni azt, amit csinálunk. Egyszerű problémákat oldunk meg, amit otthon is mindenki meg tud csinálni. Minél többször megoldod, például implementálsz sablonfüggvényt vagy unit testet írsz, annál inkább reflexből fog menni, mint a harcművészeknél a mozgás.
+Legyünk minél közelebb egymáshoz, ha lehet, egy kicsi tömeget alkossunk.
+
+Esemény 1. fele: Sablonfggvény
+Egy olyan tervezési minta, amely rögzíti egy algoritmus lépéseit, de úgy, hogy annak lépései az alosztályokban felüldefiniálhatóak anélkül, hogy az algoritmus struktúrája megváltozna. Az általános algoritmus egy helyen van definiálva, de a konkrét lépések változtathatóak az alosztályokon keresztül.
+Kötelező metódusok: az ősosztályban kell kifejteni
+Abstract, kötelezően felülírandó metódusok: alosztályokban kell kifejteni
+Hook, opcionális metódusok: felülírhatóak az alosztályokban, de nem kötelező
+
+Hollywood alapelv: ne hívj, majd mi hívunk
+
+1. Feladat
+Egy hamburgerezőben dolgozunk, ahol a kajarendelő app forráskódja optimalizálatlan, emellett tele van kódismétléssel. Elemezzük a forráskódot és nézzük meg, hogy mi vele a probléma!
+-Kódismétlés
+-Bővítés esetén újra le kell írni a teljes osztályt
+-Ha módosítani akarunk, rengeteg helyen kell
+-Bármilyen speciális hamburgert akarunk készíteni, azt csak úgy tehetjük meg, hogy újat vezetünk be, vagy meglévőt módosítunk és minden információt le kell írni róla.
+-Sima örököltetés megoldás lehet, megnézhetük, hogy mi lesz a vége. Probléma: nem mondhatom azt, hogy akkor most az adott hamburgeren valami ne legyen.
+
+2. Feladat
+Bővült a kínálat, bővítsük a forráskódot a HoneyBurger, a TurkeyBurger, a PigeonBurger, a LionBurger, a WhaleBurger osztállyal. Képzeljük el, hogy nézne ki a forráskód, ha még 100 féle hamburgerrel kellene bővíteni. Mennyi lenne a kódismétlés? Néhányat csináljunk meg, hogy lássuk mi a probléma.
+Ha van igény rá, írjuk át setterekről függvényekre!
+
+3. Feladat
+Gondolkodjunk hogyan lehetne egyszerűsíteni a dolgot. Láthattuk, hogy a sima öröklődés nem a legjobb megoldás. Valahogyan egységbe kellene foglalni az összes hamburgerre jellemző dolgot, de úgy, hogy a specialitásaikat szabadon meghatározhassuk. SABLONFÜGGVÉNY
+
+4. Feladat
+Implementáljuk a sablonfüggvényt!
+a) Hozzuk létre a Hamburger abstract osztályt!
+b) A Hamburgerben hozzuk létre a void Create() sablonfüggvényt! Ennek az elemei lesznek azok, amik a különböző hamburgerekben vannak most! Ő lesz az abstract ős.
+c) Legyenek kötelezők: Baking, Delivery
+	    felülírandó: Pasta, Sauce, Meat
+            hook: Vegetable
+Innentől kezdve a setteres megoldás nem jó nekünk.
+d) Örököltessük a hamburger osztályokat a Hamburger abstract osztályból!
+e) Implementáljuk a felülírandó metódusokat, a ChickenHamburgerben a hook-ot is!
+f) Példányosítsuk a ChickenBurgert és próbáljuk ki, hogy működik-e a sablonfüggvény!
+
+5. Feladat
+Hasonlítsuk össze az eredeti kóddal a mostanit és állapítsunk meg róla dolgokat!
+Átláthatóbb, kevésbé komplex, sokkal kevesebb kód, és jelen esetben csak 1-gyel több osztály.
+
+Lehetséges az abstract őst öröklő osztályból is örököltetni tovább, működni fog, kérdés, ennek mi értelme van. Semmi nem változik ahhoz képest, hogyha az abstractból örököltetnénk. Funkciójában nincs eltérés, hiszen az is hamburger, ha az örököltetettnek a változata, nem számít.
+
+Hogyan bővítjük a sablonfüggvényt?
+Ha kell valami új, a Hamburger osztályban határozzuk meg, azután pedig ahogy eddig, az alosztályokban kifejtjük.
+
+Esemény 2. fele: Unit Testing Pair Programming
+Ki az, aki ismeri a UT-t vagy a PP-t? Mi a véleménye róla?
+Üljenek párokba, lehetőleg olyanok, akik nem ismerik egymást.
+Lépések: 1. gondolkodni, 2. tesztet írni, 3. annyi kódot megírni, hogy átmenjen a teszt, 4. refactoring, vagyis megint teszt.
+Solution, Add New Project, Unit Test Project .NET Framework, Add Reference és using, és public class
+Van lehetőség private metódusokat is tesztelni persze.
+NEHOGY KÓDDAL KEZDD!
