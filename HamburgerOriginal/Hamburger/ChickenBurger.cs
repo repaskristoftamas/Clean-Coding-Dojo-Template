@@ -16,9 +16,9 @@ namespace Hamburger
         public string Meat { get; set; }
         public string Vegetable { get; set; }
 
-        public void Baking() => Console.WriteLine("We baked the chicken hamburger.");
+        public void Baking() => Console.WriteLine("We baked the hamburger.");
 
-        public void Delivery() => Console.WriteLine("We delivered the chicken hamburger.");
+        public void Delivery() => Console.WriteLine("We delivered the hamburger.");
 
         public void WriteOut()
         {
