@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hamburger
 {
-    abstract class BologneseBurger : Hamburger
+    class BologneseBurger : Hamburger
     {
         protected override void Meat()
         {

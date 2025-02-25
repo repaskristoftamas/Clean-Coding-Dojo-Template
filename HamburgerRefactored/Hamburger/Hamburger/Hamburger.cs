@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hamburger
 {
@@ -10,29 +6,21 @@ namespace Hamburger
     {
         public void Create()
         {
+            Meat();
             SetPasta();
             SetSauce();
-            Meat();
             Vegetable();
             Baking();
             Delivery();
         }
 
+        protected abstract void Meat();
         protected abstract void SetPasta();
         protected abstract void SetSauce();
-        protected abstract void Meat();
-        protected virtual void Vegetable()
-        {
 
-        }
+        protected virtual void Vegetable() { }
 
-        private void Baking()
-        {
-            Console.WriteLine("We baked the hamburger.");
-        }
-        private void Delivery()
-        {
-            Console.WriteLine("We delivered the hamburger.");
-        }
+        private void Baking() => Console.WriteLine("We baked the hamburger.");
+        private void Delivery() => Console.WriteLine("We delivered the hamburger.\n");
     }
 }
