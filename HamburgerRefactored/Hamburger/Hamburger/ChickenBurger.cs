@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hamburger
 {
@@ -22,6 +18,7 @@ namespace Hamburger
         {
             Console.WriteLine("Sauce: mustard");
         }
+
         protected override void Vegetable()
         {
             Console.WriteLine("Vegetable: mixed salad");
